@@ -2,7 +2,7 @@
  * Problem 2.5: add two numbers in the list
  * Solution: add it up one digit by digit, indicate the carry digit, if one list is ended, fill 0; insert the sum to the tail of the list
  * Follow up: use stacks to store the list, and then same strategy as above, only thing to pay attention is this time, the sum result should be insert from the head of the list.
- * Time complexity: O(n); Space complexity: O(1)
+ * Time complexity: O(n);
  * Aurthor: Stanley Lee
  * Date: 2013/2/28
 */
@@ -25,7 +25,6 @@ public:
   LinkedList();
   LinkedList(int* intArray, int len);
   ~LinkedList();
-  LinkedList& operator=(const LinkedList& a);
   void append(const int data);
   void insertFront(const int data);
   void printList();
@@ -60,10 +59,6 @@ LinkedList::~LinkedList(){
     }
     delete prevNode;
   }
-}
-
-LinkedList& LinkedList::operator=(const LinkedList& a){
-
 }
 
 void LinkedList::append(const int data){

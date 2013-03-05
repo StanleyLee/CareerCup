@@ -120,7 +120,6 @@ bool LinkedList<T>::isPalindrome(){
     }
     stack<T> halfList;
     int halfLen = len/2;
-    cout<<"halfLen:"<<halfLen<<endl;
     int count = 0;
     curNode = head;
     while(curNode != NULL){
@@ -150,8 +149,6 @@ int main()
     cout<<"Palindrome"<<endl;
   else
     cout<<"NOT Palindrome"<<endl;
-  int a=19/4;
-  cout<<a;
   return 0;
 //  list.printList();
 }

@@ -1,7 +1,7 @@
 /*
  * Problem 3_2: implement a stack with pop/push/top/min operation with O(1) complexity 
  * Solution1: for each element, we also store the min value of all the elements in current stack
- * Solution2: (from other sources) use another stack to keep track of the current min value in the current stack, pay attention of the push/pop operation.
+ * Solution2: (idea from other sources, not implemented) use another stack to keep track of the current min value in the current stack, pay attention of the push/pop operation.
  * Author: Stanley Lee
  * Time: 2013/3/5
  */

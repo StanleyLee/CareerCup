@@ -20,6 +20,7 @@ class LinkedList{
 private:
   Node* head;  // head pointer to the list
   int numNode; // number of nodes in the list
+  bool circleStatus; //true: circle exists; false: no circle
 public:
   LinkedList();
   LinkedList(int* intArray, int len);
@@ -104,6 +105,7 @@ void LinkedList::printList(){
 Node* LinkedList::detectCircle(){
   if(head==NULL || head->next==NULL){
    cout<<"No Circle Detected!"<<endl;
+   circleStatue = false;
    return NULL;
   }
   Node* speedPtr1 = head;
@@ -119,15 +121,18 @@ Node* LinkedList::detectCircle(){
 	}
 	else{
           cout<<"No Circle Detected!"<<endl;
+	  circleStatus = false;
 	  return NULL;
         }
       }
       else{
         cout<<"No Circle Detected!"<<endl;
+	circleStatus = false;
 	return NULL;
       }
     }
   }
+  circleStatus = true;
   cout<<"Circle detected: ";
   speedPtr1 = head;
   speedPtr2 = speedPtr2->next;

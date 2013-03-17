@@ -3,13 +3,15 @@
  * Solution 4_1: find the (maxDepth-minDepth) larger than 1 or not
  * Problem 4_3: given sorted array, construct binary search tree with minimum height
  * Solution 4_3: recursively insert the middle value of the array
- *
+ * Problem 4_5: decide if a binary is BST
+ * Solution 4_5: recursively inorder traverse to see if left<middle<right holds for each node
  * Author: Stanley Lee
  * Date: 2013/3/6
  */
 
 
 #include <iostream>
+#include <climits>
 #include <algorithm>
 using namespace std;
 
@@ -44,6 +46,7 @@ public:
   int maxDepth(Node* rootT);
   int minDepth(Node* rootT);
   bool isBalance();  //4_1
+  bool isBST(Node* rootT);  // 4_5: check is binary search tree or not
 };
 
 Tree::~Tree(){
@@ -100,9 +103,29 @@ int Tree::minDepth(Node* rootT){
   }
 }
 
-bool Tree::isBalance()
-{
+bool Tree::isBalance(){
   return maxDepth(this->root)-minDepth(this->root)>1?false:true;
+}
+
+bool Tree::isBST(Node* rootT){
+  if(rootT==NULL)
+    return true;
+  else{
+    int leftData, rightData;
+    int midData = rootT->data;
+    if(rootT->lchild==NULL)
+      leftData = INT_MIN;
+    else
+      leftData = rootT->lchild->data;
+    if(rootT->rchild==NULL)
+      rightData = INT_MAX;
+    else
+      rightData = rootT->rchild->data;
+    if(leftData<=midData && rightData>=midData)
+      return(isBST(rootT->lchild) && isBST(rootT->rchild));
+    else
+      return false;
+  }
 }
 
 int main(){
@@ -111,5 +134,7 @@ int main(){
   myTree.createBST(&(myTree.getRoot()),intArray,0,4);
   cout<<"MIN:"<<myTree.minDepth(myTree.getRoot())<<endl;
   cout<<"MAX:"<<myTree.maxDepth(myTree.getRoot())<<endl;
-  cout<<"Balance:"<<myTree.isBalance()<<endl;
+  cout<<"isBalance:"<<myTree.isBalance()<<endl;
+  cout<<"isBST:"<<myTree.isBST(myTree.getRoot())<<endl;
+
 }
